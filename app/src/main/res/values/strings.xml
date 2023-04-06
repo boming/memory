@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">MainActivity</string>
+    <string name="new_memo">New Memo</string>
+    <string name="memo_list">Memo List</string>
+    <string name="bookmarks">Bookmarks</string>
+    <string name="settings">Settings</string>
+</resources>
