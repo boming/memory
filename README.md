@@ -5,6 +5,7 @@
 
 # 기술 스택 
 - Kotlin
+- Coroutine
 - Jetpack Compose
 - Jetpack Navigation Compose 
 - AAC (LifeCycle/LiveData/Room/Navigation/ViewModel) 
