@@ -1,4 +1,4 @@
 package com.babysloth.memo.data
 
-class DbGateway {
+class DatabaseRepository {
 }
