@@ -1,11 +1,11 @@
-package com.babysloth.memo.data.dao
+package com.babysloth.memo.data.room.dao
 
 import androidx.room.*
-import com.babysloth.memo.data.model.MemoEntity
+import com.babysloth.memo.data.room.entity.MemoEntity
 import kotlinx.coroutines.flow.Flow
 
 @Dao
-interface MemoInterface {
+interface MemoDao {
     @Insert
     suspend fun insertMemo(memo: MemoEntity)
 
@@ -19,5 +19,5 @@ interface MemoInterface {
     fun getMemoById(id: Long): Flow<MemoEntity>
 
     @Query("SELECT * from memo ORDER BY updated_at LIMIT :limit OFFSET :offset")
-    fun getMemos(limit: Int, offset: Int = 0): Flow<List<MemoEntity>>
+    fun getMemos(limit: Int = 10, offset: Int = 0): Flow<List<MemoEntity>>
 }
