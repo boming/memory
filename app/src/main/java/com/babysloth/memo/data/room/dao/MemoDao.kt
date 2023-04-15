@@ -18,6 +18,6 @@ interface MemoDao {
     @Query("SELECT * from memo WHERE id = :id")
     fun getMemoById(id: Long): Flow<MemoEntity>
 
-    @Query("SELECT * from memo ORDER BY updated_at LIMIT :limit OFFSET :offset")
+    @Query("SELECT * from memo ORDER BY updated_at DESC LIMIT :limit OFFSET :offset")
     fun getMemos(limit: Int = 10, offset: Int = 0): Flow<List<MemoEntity>>
 }
