@@ -1,4 +1,4 @@
-package com.babysloth.memo.data.model
+package com.babysloth.memo.domain.model
 
 data class Memo(
     val id: Long = 0,
