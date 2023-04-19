@@ -4,5 +4,6 @@ import com.babysloth.memo.domain.model.Memo
 import kotlinx.coroutines.flow.Flow
 
 data class BookmarkUiState(
-    val memos: List<Memo> = emptyList()
+    val memos: List<Memo> = emptyList(),
+    val result: BookmarkState = BookmarkState.Uninitialized
 )
