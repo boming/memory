@@ -33,4 +33,3 @@ hs_err_pid*
 .externalNativeBuild
 .cxx
 local.properties
-.idea/gradle.xml
