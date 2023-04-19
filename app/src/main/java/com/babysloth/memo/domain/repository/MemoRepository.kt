@@ -14,4 +14,6 @@ interface MemoRepository {
     fun getMemos(): Flow<List<Memo>>
     
     fun getMemo(id: Long): Flow<Memo>
+
+    fun getBookmarkMemos(): Flow<List<Memo>>
 }
