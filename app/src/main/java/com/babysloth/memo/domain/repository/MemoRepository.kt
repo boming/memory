@@ -1,4 +1,4 @@
-package com.babysloth.memo.data.repository
+package com.babysloth.memo.domain.repository
 
 import com.babysloth.memo.data.model.Memo
 import kotlinx.coroutines.flow.Flow

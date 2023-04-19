@@ -4,6 +4,7 @@ import com.babysloth.memo.data.model.Memo
 import com.babysloth.memo.data.room.dao.MemoDao
 import com.babysloth.memo.data.room.entity.MemoEntity
 import com.babysloth.memo.data.room.entity.toMemo
+import com.babysloth.memo.domain.repository.MemoRepository
 import kotlinx.coroutines.flow.Flow
 import kotlinx.coroutines.flow.map
 
