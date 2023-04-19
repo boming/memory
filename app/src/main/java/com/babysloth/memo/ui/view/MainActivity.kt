@@ -26,6 +26,7 @@ import androidx.navigation.compose.rememberNavController
 import com.babysloth.memo.R
 import com.babysloth.memo.ui.theme.*
 import com.babysloth.memo.ui.view.MainActivity.BottomNavigationItem.*
+import com.babysloth.memo.ui.view.bookmark.BookmarkScreen
 
 class MainActivity : ComponentActivity() {
 
@@ -118,24 +119,6 @@ class MainActivity : ComponentActivity() {
         }
     }
 
-
-    @Composable
-    fun Bookmarks() {
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .background(Yellow200)
-        ) {
-            Text(
-                text = stringResource(id = R.string.bookmarks),
-                style = MaterialTheme.typography.h3,
-                textAlign = TextAlign.Center,
-                color = Brown800,
-                modifier = Modifier.align(Alignment.Center)
-            )
-        }
-    }
-
     @Composable
     fun Settings() {
         Box(
@@ -169,7 +152,7 @@ class MainActivity : ComponentActivity() {
         ) {
             composable(NewMemo.screenRoute) { NewMemo() }
             composable(MemoList.screenRoute) { MemoList() }
-            composable(Bookmarks.screenRoute) { Bookmarks() }
+            composable(Bookmarks.screenRoute) { BookmarkScreen() }
             composable(Settings.screenRoute) { Settings() }
         }
 
