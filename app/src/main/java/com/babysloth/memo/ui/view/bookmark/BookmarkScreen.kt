@@ -7,6 +7,7 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.foundation.lazy.items
+import androidx.compose.material.CircularProgressIndicator
 import androidx.compose.material.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -21,10 +22,21 @@ import com.babysloth.memo.domain.model.Memo
 fun BookmarkScreen(bookmarkViewModel: BookmarkViewModel = viewModel()) {
     val uiState by bookmarkViewModel.uiState.collectAsState()
 
-    LazyColumn(modifier = Modifier.fillMaxSize()) {
-        items(uiState.memos) { memo ->
-            BookmarkItem(memo = memo)
+    when(uiState.result) {
+        is BookmarkState.Fail -> {
+            Text(text = (uiState.result as BookmarkState.Fail).message)
         }
+        BookmarkState.Loading -> {
+            CircularProgressIndicator()
+        }
+        BookmarkState.Success -> {
+            LazyColumn(modifier = Modifier.fillMaxSize()) {
+                items(uiState.memos) { memo ->
+                    BookmarkItem(memo = memo)
+                }
+            }
+        }
+        BookmarkState.Uninitialized -> Unit
     }
 }
 
@@ -42,7 +54,5 @@ fun BookmarkItem(memo: Memo, modifier: Modifier = Modifier) {
 @Preview(showBackground = true)
 @Composable
 fun BookmarkScreenPreview() {
-    Column(modifier = Modifier.fillMaxSize()) {
-        BookmarkItem(memo = Memo(title = "나는 메모 외롭지 않아"))
-    }
+    CircularProgressIndicator()
 }
