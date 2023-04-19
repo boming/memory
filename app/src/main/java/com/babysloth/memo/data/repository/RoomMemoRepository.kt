@@ -1,12 +1,10 @@
 package com.babysloth.memo.data.repository
 
-import androidx.compose.runtime.collectAsState
 import com.babysloth.memo.data.model.Memo
 import com.babysloth.memo.data.room.dao.MemoDao
 import com.babysloth.memo.data.room.entity.MemoEntity
 import com.babysloth.memo.data.room.entity.toMemo
 import com.babysloth.memo.domain.repository.MemoRepository
-import kotlinx.coroutines.Dispatchers
 import kotlinx.coroutines.flow.*
 
 class RoomMemoRepository(private val memoDao: MemoDao) : MemoRepository {
