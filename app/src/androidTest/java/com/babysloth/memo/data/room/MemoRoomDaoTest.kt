@@ -36,6 +36,23 @@ class MemoRoomDaoTest {
         description = "",
         isBookmark = false
     )
+    private val memoBookmark1 = MemoEntity(
+        id = 3,
+        createdAt = 0,
+        updatedAt = 3,
+        title = "",
+        description = "",
+        isBookmark = true
+    )
+    private val memoBookmark2 = MemoEntity(
+        id = 4,
+        createdAt = 0,
+        updatedAt = 4,
+        title = "",
+        description = "",
+        isBookmark = true
+    )
+
 
     @Before
     fun createDb() {
@@ -92,6 +109,20 @@ class MemoRoomDaoTest {
         val memos = dao.getMemos().first()
 
         assertEquals(1, memos.size)
+    }
+
+    @Test
+    fun daoGet_getBookmarkMemo() = runBlocking {
+        dao.insertMemo(memo1)
+        dao.insertMemo(memo2)
+        dao.insertMemo(memoBookmark1)
+        dao.insertMemo(memoBookmark2)
+
+        val memos = dao.getBookmarkMemos().first()
+
+        assertEquals(2, memos.size)
+        assertEquals(memoBookmark2.id, memos[0].id)
+        assertEquals(memoBookmark1.id, memos[1].id)
     }
 
     @After

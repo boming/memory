@@ -20,4 +20,12 @@ interface MemoDao {
 
     @Query("SELECT * from memo ORDER BY updated_at DESC LIMIT :limit OFFSET :offset")
     fun getMemos(limit: Int = 10, offset: Int = 0): Flow<List<MemoEntity>>
+
+    @Query("SELECT * from memo WHERE is_bookmark = :isBookmark ORDER BY updated_at DESC LIMIT :limit OFFSET :offset")
+    fun getBookmarkMemos(
+        isBookmark: Boolean = true,
+        limit: Int = 10,
+        offset: Int = 0
+    ): Flow<List<MemoEntity>>
+
 }

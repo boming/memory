@@ -22,3 +22,14 @@ data class Memo(
         )
     }
 }
+
+fun Memo.toMemo(): com.babysloth.memo.domain.model.Memo {
+    return com.babysloth.memo.domain.model.Memo(
+        id = id,
+        createdAt = createdAt,
+        updatedAt = updatedAt,
+        title = title,
+        description = description,
+        isBookmark = isBookmark
+    )
+}
