@@ -14,17 +14,15 @@ class BookmarkViewModel : ViewModel() {
     private val _uiState = MutableStateFlow(BookmarkUiState())
 
     //TODO: DI 적용 필요
-    private var repository: RoomMemoRepository
-    private var bookmarkUseCase: GetBookmarkUseCase
+    private var repository: RoomMemoRepository = RoomMemoRepository(
+        MemoApplication.INSTANCE.database.memoDao()
+    )
+    private var bookmarkUseCase: GetBookmarkUseCase = GetBookmarkUseCase(repository)
 
     val uiState = _uiState.asStateFlow()
 
     init {
         //TODO: DI 적용 필요
-        repository = RoomMemoRepository(
-            MemoApplication.INSTANCE.database.memoDao()
-        )
-        bookmarkUseCase = GetBookmarkUseCase(repository)
 
         viewModelScope.launch {
             bookmarkUseCase.getBookmarks()
