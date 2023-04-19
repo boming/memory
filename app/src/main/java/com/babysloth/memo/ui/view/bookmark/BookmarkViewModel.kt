@@ -22,8 +22,6 @@ class BookmarkViewModel : ViewModel() {
     val uiState = _uiState.asStateFlow()
 
     init {
-        //TODO: DI 적용 필요
-
         viewModelScope.launch {
             bookmarkUseCase.getBookmarks()
                 .collect { memos ->
