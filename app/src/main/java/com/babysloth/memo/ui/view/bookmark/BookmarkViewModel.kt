@@ -5,6 +5,7 @@ import androidx.lifecycle.viewModelScope
 import com.babysloth.memo.MemoApplication
 import com.babysloth.memo.data.database.MemoRoomDatabase
 import com.babysloth.memo.data.repository.RoomMemoRepository
+import com.babysloth.memo.data.room.dao.MemoDao
 import com.babysloth.memo.domain.usecase.GetBookmarkUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -18,11 +19,11 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BookmarkViewModel @Inject constructor(
-    database: MemoRoomDatabase
+    dao: MemoDao
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(BookmarkUiState())
 
-    private var repository = RoomMemoRepository(database.memoDao())
+    private var repository = RoomMemoRepository(dao)
     private var bookmarkUseCase = GetBookmarkUseCase(repository)
 
     val uiState = _uiState.asStateFlow()
