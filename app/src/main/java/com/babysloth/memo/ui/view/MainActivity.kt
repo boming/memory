@@ -27,7 +27,9 @@ import com.babysloth.memo.R
 import com.babysloth.memo.ui.theme.*
 import com.babysloth.memo.ui.view.MainActivity.BottomNavigationItem.*
 import com.babysloth.memo.ui.view.bookmark.BookmarkScreen
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {

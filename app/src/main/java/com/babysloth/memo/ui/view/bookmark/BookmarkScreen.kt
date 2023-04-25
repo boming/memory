@@ -1,7 +1,6 @@
 package com.babysloth.memo.ui.view.bookmark
 
 import androidx.compose.foundation.layout.Box
-import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.fillMaxSize
 import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.size
@@ -15,11 +14,11 @@ import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
-import androidx.lifecycle.viewmodel.compose.viewModel
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.babysloth.memo.domain.model.Memo
 
 @Composable
-fun BookmarkScreen(bookmarkViewModel: BookmarkViewModel = viewModel()) {
+fun BookmarkScreen(bookmarkViewModel: BookmarkViewModel = hiltViewModel() ) {
     val uiState by bookmarkViewModel.uiState.collectAsState()
 
     when(uiState.result) {

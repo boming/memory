@@ -6,8 +6,9 @@ import com.babysloth.memo.data.room.entity.MemoEntity
 import com.babysloth.memo.data.room.entity.toMemo
 import com.babysloth.memo.domain.repository.MemoRepository
 import kotlinx.coroutines.flow.*
+import javax.inject.Inject
 
-class RoomMemoRepository(private val memoDao: MemoDao) : MemoRepository {
+class RoomMemoRepository @Inject constructor(private val memoDao: MemoDao) : MemoRepository {
     override suspend fun create(memo: Memo) {
         memoDao.insertMemo(MemoEntity.from(memo))
     }
