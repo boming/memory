@@ -6,6 +6,7 @@ import com.babysloth.memo.MemoApplication
 import com.babysloth.memo.data.database.MemoRoomDatabase
 import com.babysloth.memo.data.repository.RoomMemoRepository
 import com.babysloth.memo.data.room.dao.MemoDao
+import com.babysloth.memo.data.room.entity.MemoEntity
 import com.babysloth.memo.domain.usecase.GetBookmarkUseCase
 import dagger.hilt.android.lifecycle.HiltViewModel
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -19,17 +20,48 @@ import javax.inject.Inject
 
 @HiltViewModel
 class BookmarkViewModel @Inject constructor(
-    dao: MemoDao
+    database: MemoRoomDatabase,
+    bookmarkUseCase: GetBookmarkUseCase
 ) : ViewModel() {
     private val _uiState = MutableStateFlow(BookmarkUiState())
 
-    private var repository = RoomMemoRepository(dao)
-    private var bookmarkUseCase = GetBookmarkUseCase(repository)
-
     val uiState = _uiState.asStateFlow()
+    val dao = database.memoDao()
 
     init {
         viewModelScope.launch {
+            dao.updateMemo(
+                MemoEntity(
+                    id = 1,
+                    createdAt = System.currentTimeMillis(),
+                    updatedAt = System.currentTimeMillis(),
+                    title = "1111111",
+                    description = "",
+                    isBookmark = true
+                )
+            )
+
+            dao.updateMemo(
+                MemoEntity(
+                    id = 3,
+                    createdAt = System.currentTimeMillis(),
+                    updatedAt = System.currentTimeMillis(),
+                    title = "222222",
+                    description = "",
+                    isBookmark = true
+                )
+            )
+
+            dao.updateMemo(
+                MemoEntity(
+                    id = 5,
+                    createdAt = System.currentTimeMillis(),
+                    updatedAt = System.currentTimeMillis(),
+                    title = "33333",
+                    description = "",
+                    isBookmark = true
+                )
+            )
             bookmarkUseCase.getBookmarks()
                 .onStart {
                     _uiState.update {
